@@ -2,7 +2,7 @@
 
 Next.js frontend used to query and operate the [`payment-api`](../payment-api) project.
 
-This application consumes the backend located in `nestJs/payment-api` and allows you to:
+This application consumes the backend located in `payment-api` and allows you to:
 
 - list existing orders;
 - create new orders;
