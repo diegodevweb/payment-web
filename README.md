@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Payment Web
 
-## Getting Started
+Frontend em Next.js para consulta e operação da API do projeto [`payment-api`](../payment-api).
 
-First, run the development server:
+Esta aplicação consome o backend localizado na pasta `nestJs/payment-api` e permite:
+
+- listar pedidos cadastrados;
+- criar novos pedidos;
+- iniciar a criação de pagamento para pedidos com status compatível.
+
+## Requisitos
+
+- Node.js instalado;
+- API `payment-api` disponível e em execução;
+- variável de ambiente `NEXT_PUBLIC_API_URL` apontando para a API.
+
+## Configuração
+
+O projeto já utiliza a variável abaixo no arquivo `.env`:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+Se a API estiver rodando em outra porta ou host, ajuste esse valor.
+
+## Como executar
+
+1. Inicie primeiro o backend em `../payment-api`.
+2. Neste projeto, instale as dependências:
+
+```bash
+npm install
+```
+
+3. Rode o frontend em modo de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Acesse `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Integração com a API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O frontend faz chamadas para os seguintes endpoints do backend:
 
-## Learn More
+- `GET /orders` para listar pedidos;
+- `POST /orders` para criar um novo pedido;
+- `POST /payments/intent` para iniciar o fluxo de pagamento.
 
-To learn more about Next.js, take a look at the following resources:
+Todas essas chamadas usam a base definida em `NEXT_PUBLIC_API_URL`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts disponíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
