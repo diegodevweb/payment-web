@@ -1,57 +1,57 @@
 # Payment Web
 
-Frontend em Next.js para consulta e operação da API do projeto [`payment-api`](../payment-api).
+Next.js frontend used to query and operate the [`payment-api`](../payment-api) project.
 
-Esta aplicação consome o backend localizado na pasta `nestJs/payment-api` e permite:
+This application consumes the backend located in `nestJs/payment-api` and allows you to:
 
-- listar pedidos cadastrados;
-- criar novos pedidos;
-- iniciar a criação de pagamento para pedidos com status compatível.
+- list existing orders;
+- create new orders;
+- trigger payment intent creation for eligible orders.
 
-## Requisitos
+## Requirements
 
-- Node.js instalado;
-- API `payment-api` disponível e em execução;
-- variável de ambiente `NEXT_PUBLIC_API_URL` apontando para a API.
+- Node.js installed;
+- the `payment-api` backend running and available;
+- the `NEXT_PUBLIC_API_URL` environment variable pointing to the API.
 
-## Configuração
+## Configuration
 
-O projeto já utiliza a variável abaixo no arquivo `.env`:
+The project already uses the following variable in the `.env` file:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-Se a API estiver rodando em outra porta ou host, ajuste esse valor.
+If the API is running on a different host or port, update this value.
 
-## Como executar
+## Running the Project
 
-1. Inicie primeiro o backend em `../payment-api`.
-2. Neste projeto, instale as dependências:
+1. Start the backend first from `../payment-api`.
+2. In this project, install the dependencies:
 
 ```bash
 npm install
 ```
 
-3. Rode o frontend em modo de desenvolvimento:
+3. Run the frontend in development mode:
 
 ```bash
 npm run dev
 ```
 
-4. Acesse `http://localhost:3000`.
+4. Open `http://localhost:3000`.
 
-## Integração com a API
+## API Integration
 
-O frontend faz chamadas para os seguintes endpoints do backend:
+The frontend calls the following backend endpoints:
 
-- `GET /orders` para listar pedidos;
-- `POST /orders` para criar um novo pedido;
-- `POST /payments/intent` para iniciar o fluxo de pagamento.
+- `GET /orders` to list orders;
+- `POST /orders` to create a new order;
+- `POST /payments/intent` to start the payment flow.
 
-Todas essas chamadas usam a base definida em `NEXT_PUBLIC_API_URL`.
+All requests use the base URL defined in `NEXT_PUBLIC_API_URL`.
 
-## Scripts disponíveis
+## Available Scripts
 
 ```bash
 npm run dev
